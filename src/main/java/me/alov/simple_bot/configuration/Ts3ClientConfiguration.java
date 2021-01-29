@@ -2,8 +2,12 @@ package me.alov.simple_bot.configuration;
 
 import com.github.manevolent.ts3j.identity.LocalIdentity;
 import com.github.manevolent.ts3j.protocol.socket.client.LocalTeamspeakClientSocket;
+import com.github.theholywaffle.teamspeak3.TS3Api;
+import com.github.theholywaffle.teamspeak3.TS3Config;
+import com.github.theholywaffle.teamspeak3.TS3Query;
 import lombok.SneakyThrows;
 import me.alov.simple_bot.listener.SimpleListener;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,26 +18,22 @@ import java.security.GeneralSecurityException;
 @Configuration
 public class Ts3ClientConfiguration {
 
-    @SneakyThrows
+
     @Bean
-    public LocalTeamspeakClientSocket ts3client() throws GeneralSecurityException {
-        LocalTeamspeakClientSocket client = new LocalTeamspeakClientSocket();
+    @Qualifier("ts3Api")
+    public TS3Api ts3Api() {
+        final TS3Config config = new TS3Config();
+        config.setHost("192.248.183.99");
 
-        // Set up client
-        client.setIdentity(LocalIdentity.generateNew(7));
-        client.addListener(new SimpleListener());
-        client.setNickname("PewPewBot");
+        final TS3Query query = new TS3Query(config);
+        query.connect();
 
-        client.connect(
-                new InetSocketAddress(
-                        InetAddress.getByName("192.248.183.99"),
-                        9987
-                ),
-                "",
-                10000L
-        );
-
-        return client;
-
+        TS3Api api = query.getApi();
+        api.login("serveradmin", "zhB7Wbh2");
+        api.selectVirtualServerById(1);
+        api.setNickname("PutPutBot_1");
+        api.sendChannelMessage("PutPutBot is online!");
+        return api;
     }
+
 }
