@@ -14,26 +14,26 @@ import java.security.GeneralSecurityException;
 @Configuration
 public class Ts3ClientConfiguration {
 
-//    @SneakyThrows
-//    @Bean
-//    public LocalTeamspeakClientSocket ts3client() throws GeneralSecurityException {
-//        LocalTeamspeakClientSocket client = new LocalTeamspeakClientSocket();
-//
-//        // Set up client
-//        client.setIdentity(LocalIdentity.generateNew(7));
-//        client.addListener(new SimpleListener());
-//        client.setNickname("PewPewBot");
-//
-//        client.connect(
-//                new InetSocketAddress(
-//                        InetAddress.getByName("192.248.183.99"),
-//                        9987
-//                ),
-//                "",
-//                10000L
-//        );
-//
-//        return client;
-//
-//    }
+    @SneakyThrows
+    @Bean
+    public LocalTeamspeakClientSocket ts3client() throws GeneralSecurityException {
+        LocalTeamspeakClientSocket client = new LocalTeamspeakClientSocket();
+
+        // Set up client
+        client.setIdentity(LocalIdentity.generateNew(7));
+        client.addListener(new SimpleListener());
+        client.setNickname("PewPewBot");
+
+        client.connect(
+                new InetSocketAddress(
+                        InetAddress.getByName("192.248.183.99"),
+                        9987
+                ),
+                "",
+                10000L
+        );
+
+        return client;
+
+    }
 }

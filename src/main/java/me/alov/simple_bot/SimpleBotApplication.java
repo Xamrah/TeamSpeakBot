@@ -20,7 +20,7 @@ public class SimpleBotApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String s = ytUtils.downloadMusicFromYt("https://www.youtube.com/watch?v=p1r-loqlKhk");
-        log.info(s);
+//        String s = ytUtils.downloadMusicFromYt("https://www.youtube.com/watch?v=p1r-loqlKhk");
+//        log.info(s);
     }
 }
