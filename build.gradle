@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-//    implementation 'com.sapher:youtubedl:1.2'
+    implementation 'com.sapher:youtubedl:1.2'
     implementation 'com.github.Manevolent:ts3j:1.0.2'
     compile group: 'com.github.theholywaffle', name: 'teamspeak3-api', version: '1.2.0'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'

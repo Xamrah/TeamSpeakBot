@@ -1,6 +1,5 @@
 package me.alov.simple_bot.service;
 
-import com.github.manevolent.ts3j.command.CommandException;
 import lombok.extern.slf4j.Slf4j;
 import me.alov.simple_bot.model.WarfaceClanDto;
 import me.alov.simple_bot.model.WarfaceClanLeague;
@@ -11,11 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -40,7 +35,7 @@ public class WarfaceService {
     private Ts3Client ts3QueryClient;
 
     @Scheduled(fixedDelay = 1000 * 60 * 20)
-    public void checkClanRank() {
+    public WarfaceClanDto checkClanRank() {
             ResponseEntity<List<WarfaceClanDto>> responseEntity = restTemplate.exchange("http://api.warface.ru/rating/monthly?server=Альфа&clan=Лювенис", HttpMethod.GET, null, new ParameterizedTypeReference<List<WarfaceClanDto>>() {});
             List<WarfaceClanDto> data = responseEntity.getBody();
             WarfaceClanDto luvenis = data.stream().filter(c -> c.getName().equals("Лювенис")).findFirst().get();
@@ -66,5 +61,6 @@ public class WarfaceService {
             } catch (Exception E) {
                 log.warn("This channel name already in use: {}", CHANNEL_NAME_MEMBERS + luvenis.getMembers());
             }
+            return luvenis;
     }
 }

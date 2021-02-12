@@ -1,3 +1,4 @@
+
 ts3:
   server:
     host: 192.248.183.99
@@ -5,3 +6,5 @@ ts3:
     password:
   client:
     music-dir: ./files/
+server:
+  port: 9121
