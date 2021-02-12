@@ -10,12 +10,15 @@ import me.alov.simple_bot.listener.SimpleListener;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.security.GeneralSecurityException;
 
 @Configuration
+@EnableScheduling
 public class Ts3ClientConfiguration {
 
 
@@ -34,6 +37,11 @@ public class Ts3ClientConfiguration {
         api.setNickname("PutPutBot_1");
         api.sendChannelMessage("PutPutBot is online!");
         return api;
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }

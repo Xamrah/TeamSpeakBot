@@ -2,6 +2,7 @@ package me.alov.simple_bot;
 
 import lombok.extern.slf4j.Slf4j;
 import me.alov.simple_bot.service.Ts3Client;
+import me.alov.simple_bot.service.WarfaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,12 +15,14 @@ public class SimpleBotApplication implements CommandLineRunner {
     @Autowired
     private Ts3Client ts3QueryClient;
 
+    @Autowired
+    private WarfaceService warfaceService;
+
     public static void main(String[] args) {
         SpringApplication.run(SimpleBotApplication.class, args);
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        ts3QueryClient.renameChannel(58, "yaebusobak");
+    public void run(String... args) {
     }
 }
