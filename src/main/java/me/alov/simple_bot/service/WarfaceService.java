@@ -33,15 +33,13 @@ public class WarfaceService {
     private final Integer CHANNEL_ID_MEMBERS = 65;
     private String CHANNEL_NAME_MEMBERS = "[cspacer0] Участников: ";
 
-
-
     @Autowired
     private RestTemplate restTemplate;
 
     @Autowired
     private Ts3Client ts3QueryClient;
 
-    @Scheduled(fixedDelay = 1000 * 60 * 5)
+    @Scheduled(fixedDelay = 1000 * 60 * 20)
     public void checkClanRank() {
             ResponseEntity<List<WarfaceClanDto>> responseEntity = restTemplate.exchange("http://api.warface.ru/rating/monthly?server=Альфа&clan=Лювенис", HttpMethod.GET, null, new ParameterizedTypeReference<List<WarfaceClanDto>>() {});
             List<WarfaceClanDto> data = responseEntity.getBody();
@@ -69,7 +67,4 @@ public class WarfaceService {
                 log.warn("This channel name already in use: {}", CHANNEL_NAME_MEMBERS + luvenis.getMembers());
             }
     }
-
-
-
 }
