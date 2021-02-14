@@ -8,5 +8,5 @@ import java.util.concurrent.TimeoutException;
 
 public interface Ts3Client {
     void changeServerBanner(String imageUrl);
-    void renameChannel(int channelId, String channelName) throws InterruptedException, CommandException, TimeoutException, IOException;
+    void renameChannel(int channelId, String channelName);
 }
