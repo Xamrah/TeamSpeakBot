@@ -15,9 +15,10 @@ configurations {
 }
 
 repositories {
+    maven { url 'https://repo.alov.me/storages/storage0/releases' }
     maven { url 'https://jitpack.io' }
     mavenCentral()
-    mavenLocal()
+//    mavenLocal()
 }
 
 dependencies {
