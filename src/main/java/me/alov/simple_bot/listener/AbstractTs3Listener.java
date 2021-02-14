@@ -9,16 +9,6 @@ public abstract class AbstractTs3Listener implements TS3Listener {
     }
 
     @Override
-    public void onClientJoin(ClientJoinEvent e) {
-
-    }
-
-    @Override
-    public void onClientLeave(ClientLeaveEvent e) {
-
-    }
-
-    @Override
     public void onServerEdit(ServerEditedEvent e) {
 
     }

@@ -9,4 +9,6 @@ import java.util.concurrent.TimeoutException;
 public interface Ts3Client {
     void changeServerBanner(String imageUrl);
     void renameChannel(int channelId, String channelName);
+    Integer getOnlineMembers();
+    void addListener();
 }

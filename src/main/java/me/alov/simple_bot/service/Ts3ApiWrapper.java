@@ -3,8 +3,10 @@ package me.alov.simple_bot.service;
 import com.github.theholywaffle.teamspeak3.TS3Api;
 import com.github.theholywaffle.teamspeak3.api.ChannelProperty;
 import com.github.theholywaffle.teamspeak3.api.VirtualServerProperty;
+import com.github.theholywaffle.teamspeak3.api.event.TS3Listener;
 import com.github.theholywaffle.teamspeak3.api.exception.TS3CommandFailedException;
 import lombok.extern.slf4j.Slf4j;
+import me.alov.simple_bot.listener.OnlineMemberListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +21,10 @@ public class Ts3ApiWrapper implements Ts3Client {
 
     @Autowired
     private TS3Api ts3Api;
+
+    @Autowired
+    private OnlineMemberListener onlineMemberListener;
+
 
     @Override
     public void changeServerBanner(String imageUrl) {
@@ -41,6 +47,15 @@ public class Ts3ApiWrapper implements Ts3Client {
         } catch (TS3CommandFailedException e) {
             log.warn(e.getError().getMessage());
         }
+    }
 
+    @Override
+    public void addListener() {
+        ts3Api.addTS3Listeners((TS3Listener) onlineMemberListener);
+    }
+
+    @Override
+    public Integer getOnlineMembers() {
+        return ts3Api.getClients().size();
     }
 }
