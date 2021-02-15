@@ -26,8 +26,8 @@ public class Ts3ClientConfiguration {
         TS3Api api = query.getApi();
         api.login("serveradmin", "zhB7Wbh2");
         api.selectVirtualServerById(1);
-        api.setNickname("PutPutBot");
-        api.sendChannelMessage("PutPutBot is online!");
+        api.setNickname("LuvenisBot");
+        api.sendChannelMessage("LuvenisBot is online!");
         api.registerAllEvents();
         return api;
     }
