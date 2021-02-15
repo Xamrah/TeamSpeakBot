@@ -1,16 +1,20 @@
 package me.alov.simple_bot.service;
 
+import com.github.theholywaffle.teamspeak3.api.event.TS3Listener;
 import lombok.RequiredArgsConstructor;
-import me.alov.simple_bot.listener.OnlineMemberListener;
 import me.alov.simple_bot.model.WarfaceClanDto;
 import me.alov.simple_bot.model.WarfaceClanLeague;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class Ts3Service {
 
     private final Ts3ApiWrapper ts3Api;
+    private final Set<TS3Listener> listeners;
 
     //TODO: move to global properties-map
     private final Integer CHANNEL_ID_LEAGUE = 62;
@@ -33,7 +37,16 @@ public class Ts3Service {
 
     }
 
-    public void updateTs3Members(){
-        ts3Api.renameChannel(CHANNEL_ID_ONLINE, CHANNEL_NAME_ONLINE + OnlineMemberListener.getOnlineMembers());
+    public void updateTs3Members() {
+        ts3Api.renameChannel(CHANNEL_ID_ONLINE, CHANNEL_NAME_ONLINE + getOnlineClientsCount());
+    }
+
+    public Integer getOnlineClientsCount() {
+        return ts3Api.getOnlineMembers();
+    }
+
+    @PostConstruct
+    public void init() {
+        listeners.forEach(ts3Api::addListener);
     }
 }

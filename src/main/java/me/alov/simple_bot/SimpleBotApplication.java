@@ -1,10 +1,9 @@
 package me.alov.simple_bot;
 
-import com.github.theholywaffle.teamspeak3.TS3Api;
 import lombok.extern.slf4j.Slf4j;
+import me.alov.simple_bot.listener.OnlineMemberListener;
 import me.alov.simple_bot.service.Ts3ApiWrapper;
-import me.alov.simple_bot.service.Ts3Client;
-import me.alov.simple_bot.service.WarfaceService;
+import me.alov.simple_bot.service.Ts3Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,13 +14,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SimpleBotApplication implements CommandLineRunner {
 
     @Autowired
-    private Ts3Client ts3QueryClient;
-
+    private OnlineMemberListener onlineMemberListener;
     @Autowired
-    private WarfaceService warfaceService;
-
+    private Ts3ApiWrapper ts3Api;
     @Autowired
-    private Ts3ApiWrapper ts3ApiWrapper;
+    private Ts3Service ts3Service;
 
     public static void main(String[] args) {
         SpringApplication.run(SimpleBotApplication.class, args);
@@ -29,6 +26,6 @@ public class SimpleBotApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        ts3ApiWrapper.addListener();
+        ts3Service.updateTs3Members();
     }
 }

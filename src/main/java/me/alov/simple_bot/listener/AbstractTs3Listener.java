@@ -1,8 +1,10 @@
 package me.alov.simple_bot.listener;
 
-import com.github.manevolent.ts3j.event.*;
+
+import com.github.theholywaffle.teamspeak3.api.event.*;
 
 public abstract class AbstractTs3Listener implements TS3Listener {
+
     @Override
     public void onTextMessage(TextMessageEvent e) {
 
@@ -49,102 +51,7 @@ public abstract class AbstractTs3Listener implements TS3Listener {
     }
 
     @Override
-    public void onChannelList(ChannelListEvent e) {
-
-    }
-
-    @Override
     public void onPrivilegeKeyUsed(PrivilegeKeyUsedEvent e) {
-
-    }
-
-    @Override
-    public void onChannelGroupList(ChannelGroupListEvent e) {
-
-    }
-
-    @Override
-    public void onServerGroupList(ServerGroupListEvent e) {
-
-    }
-
-    @Override
-    public void onClientNeededPermissions(ClientNeededPermissionsEvent e) {
-
-    }
-
-    @Override
-    public void onClientChannelGroupChanged(ClientChannelGroupChangedEvent e) {
-
-    }
-
-    @Override
-    public void onClientChanged(ClientUpdatedEvent e) {
-
-    }
-
-    @Override
-    public void onDisconnected(DisconnectedEvent e) {
-
-    }
-
-    @Override
-    public void onChannelSubscribed(ChannelSubscribedEvent e) {
-
-    }
-
-    @Override
-    public void onChannelUnsubscribed(ChannelUnsubscribedEvent e) {
-
-    }
-
-    @Override
-    public void onServerGroupClientAdded(ServerGroupClientAddedEvent e) {
-
-    }
-
-    @Override
-    public void onServerGroupClientDeleted(ServerGroupClientDeletedEvent e) {
-
-    }
-
-    @Override
-    public void onClientPoke(ClientPokeEvent e) {
-
-    }
-
-    @Override
-    public void onClientComposing(ClientChatComposingEvent e) {
-
-    }
-
-    @Override
-    public void onPermissionList(PermissionListEvent e) {
-
-    }
-
-    @Override
-    public void onConnected(ConnectedEvent e) {
-
-    }
-
-    @Override
-    public void onClientChatClosed(ClientChatClosedEvent e) {
-
-    }
-
-    @Override
-    public void onClientPermHints(ClientPermHintsEvent e) {
-
-    }
-
-    @Override
-    public void onChannelPermHints(ChannelPermHintsEvent e) {
-
-    }
-
-    @Override
-    public void onUnknownEvent(UnknownTeamspeakEvent e) {
 
     }
 }
